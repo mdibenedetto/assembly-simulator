@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seven segments led - Number convert</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <section class="seven-segment">
+          <label class="top-segment">
+            <input type="checkbox" name="" id="" />
+          </label>
+
+          <label class="top-left-segment">
+            <input type="checkbox" name="" id="" />
+          </label>
+
+          <label class="bottom-left-segment">
+            <input type="checkbox" name="" id="" />
+          </label>
+
+          <label class="bottom-segment">
+            <input type="checkbox" name="" id="" />
+          </label>
+
+          <label class="bottom-right-segment">
+            <input type="checkbox" name="" id="" />
+          </label>
+
+          <label class="middle-segment">
+            <input type="checkbox" name="" id="" />
+            <div class="top"></div>
+            <div class="bottom"></div>
+          </label>
+
+          <label class="top-right-segment">
+            <input type="checkbox" name="" id="" />
+          </label>
+        </section>
+        <section class="display-side">
+          <label>
+            left Display
+            <input type="radio" name="side" id="leftDisplay" value="0" />
+          </label>
+          <label for="">
+            Right Display
+            <input type="radio" name="side" id="rightDisplay" value="1" />
+          </label>
+        </section>
+
+        <section class="output-container">
+          <div class="output-content">
+            <div>
+              <h2>Binary:</h2>
+              <output id="binaryOutput">
+                00000000
+              </output>
+            </div>
+
+            <div>
+              <h2>Hexadecimal:</h2>
+              <output id="hexOutput">
+                x0
+              </output>
+            </div>
+
+            <div>
+              <h2>Decimal:</h2>
+              <output id="decimalOutput">
+                0
+              </output>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section id="assembly">
+        <pre>            
+            ; ===== Seven Segment Displays Port 02 =================
+            Start:
+                MOV	AL,<span id="assemblyValue">FA</span>		; 1111 1010
+                OUT	02	; Send the data in AL to Port 02
+            
+                MOV	AL,0	; 0000 0000
+                OUT	02	; Send the data in AL to Port 02
+                
+                MOV	AL,FB	; 1111 1011
+                OUT	02	; Send the data in AL to Port 02
+            
+                MOV	AL,1	; 0000 0001
+                OUT	02	; Send the data in AL to Port 02
+            
+                JMP	Start
+                
+                END
+            ; ======================================================
+        </pre>
+        <pre>
+          ; ====================================================== 
+            ; Activation rules
+            ; ====================================================== 
+
+            ; top = 10000000 = 80
+            ; top-left = 01000000 = 40
+            ; bottom-left = 00100000 = 20
+            ; bottom = 00010000 = 10
+            ; bottom-right = 00001000 = 8
+            ; middle = 00000100 = 4
+            ; top-right = 00000010 = 2
+
+            ; Examples
+              ; top = 10000000 = 80
+              ; top-left = 11000000 = C0
+              ; bottom-left = 11100000 = E0
+              ; bottom = 11110000 = F0
+              ; bottom-right = 11111000 = F8
+              ; middle = 11111100 = FC
+              ; top-right = 11111110 = FE
+            ; ====================================================== 
+        </pre>
+      </section>
+    </main>
+    <script>
+      const rightDisplay = document.querySelector("#rightDisplay");
+
+      const sidesDisplay = document.querySelectorAll("input[type='radio']");
+      sidesDisplay.forEach(tl =>
+        tl.addEventListener("click", e => {
+          convert();
+        })
+      );
+
+      const trafficLights = document.querySelectorAll("input[type='checkbox']");
+
+      trafficLights.forEach(tl =>
+        tl.addEventListener(
+          "click",
+          () => {
+            toggle();
+            convert();
+          },
+          { capture: true }
+        )
+      );
+
+      const binaryOutputElement = document.querySelector("#binaryOutput");
+      const hexOutputElement = document.querySelector("#hexOutput");
+      const decimalOutputElement = document.querySelector("#decimalOutput");
+
+      const assemblyValue = document.querySelector("#assemblyValue");
+
+      function toggle() {
+        event.target.parentNode.classList.toggle("active");
+      }
+
+      function convert() {
+        let binaryInputString = "";
+        trafficLights.forEach(tl => {
+          if (tl.parentNode.classList.contains("active")) {
+            binaryInputString += "1";
+          } else {
+            binaryInputString += "0";
+          }
+        });
+        //add the unused lights
+        if (rightDisplay.checked) {
+          binaryInputString += "1";
+        } else {
+          binaryInputString += "0";
+        }
+
+        var bynaryOutput = parseInt(binaryInputString, 2);
+        // new BigNumber(binaryInputString, 2);
+        let hexOutput = bynaryOutput.toString(16).toUpperCase();
+
+        binaryOutputElement.innerHTML = binaryInputString;
+        decimalOutputElement.innerHTML = bynaryOutput;
+        hexOutputElement.innerHTML = hexOutput;
+
+        // set assembly value to switch on the chosen lights
+        assemblyValue.innerHTML = hexOutput;
+      }
+    </script>
+  </body>
+</html>

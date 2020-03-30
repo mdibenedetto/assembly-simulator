@@ -1,0 +1,214 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  display: flex;
+}
+
+
+.seven-segment,
+.traffic-lights {
+  display: flex;
+  width: fit-content;
+  margin: auto;
+}
+
+
+input[type="checkbox"] {
+  opacity: 0;
+  display: none;
+}
+
+/* START traffic-lights  */
+.traffic-lights label {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 50%;
+  opacity: 0.5;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.traffic-lights label.gray {
+  cursor: not-allowed;
+}
+
+.traffic-lights label:not(.gray):hover,
+.traffic-lights label.active {
+  opacity: 1;
+}
+
+.traffic-lights label::after {
+  content: "0";
+  margin: auto;
+}
+.traffic-lights label.active::after {
+  content: "1";
+  margin: auto;
+}
+.red {
+  background: red;
+}
+.yellow {
+  background: yellow;
+}
+.green {
+  background: greenyellow;
+}
+
+.gray {
+  background: gray;
+}
+
+.traffic-lights .left,
+.traffic-lights .right {
+  margin: 5px;
+  border: 5px solid black;
+  background: #2d2c2c;
+}
+/* END traffic-lights  */
+
+/* START seven-segments-led */
+.seven-segment {
+  position: relative;
+  width: 186px;
+  height: 371px;
+}
+
+.seven-segment > label {
+  opacity: 0.5;
+}
+.seven-segment > label:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+ 
+.seven-segment label.active {
+  opacity: 1;
+}
+
+.seven-segment .top-segment {
+  position: absolute;
+  left: 10px;
+  height: 0;
+  width: 100px;
+  border-top: 30px solid #ff3636;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+
+.seven-segment .top-right-segment {
+  position: absolute;
+  left: 150px;
+  top: 10px;
+  height: 100px;
+  width: 0;
+  border-right: 30px solid #ff3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.seven-segment .bottom-right-segment {
+  position: absolute;
+  left: 150px;
+  top: 180px;
+  height: 100px;
+  width: 0;
+  border-right: 30px solid #ff3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.seven-segment .bottom-segment {
+  position: absolute;
+  top: 320px;
+  left: 10px;
+  height: 0;
+  width: 100px;
+  border-bottom: 30px solid #ff3636;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+}
+.seven-segment .bottom-left-segment {
+  position: absolute;
+  left: 0;
+  top: 180px;
+  height: 100px;
+  width: 0;
+  border-left: 30px solid #ff3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+.seven-segment .top-left-segment {
+  position: absolute;
+  left: 0;
+  top: 10px;
+  height: 100px;
+  width: 0;
+  border-left: 30px solid #ff3636;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+}
+
+.seven-segment .middle-segment {
+  position: absolute;
+  top: 162px;
+  left: 35px;
+  transform: scale(1.4);
+}
+.seven-segment .middle-segment .bottom {
+  border-top: 15px solid #ff3636;
+}
+.seven-segment .middle-segment .top {
+  border-bottom: 15px solid #ff3636;
+}
+
+.seven-segment .middle-segment .top,
+.seven-segment .middle-segment .bottom {
+  height: 0;
+  width: 80px;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+}
+
+.seven-segment .display-side{
+
+
+}
+.seven-segment .display-side input{
+  transform: scale (1.5);
+}
+
+/* END seven-segments-led */
+
+.output-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.output-content {
+  width: fit-content;
+  background: lightgray;
+  border: 1px solid;
+  padding: 20px;
+}
+
+output {
+  letter-spacing: 3px;
+  border: 1px solid;
+  font-size: 60px;
+  margin: 5px;
+  padding: 5px;
+  background: white;
+}
+
+#assembly {
+  font-size: 25px;
+}
+
+#assemblyValue {
+  color: red;
+}
