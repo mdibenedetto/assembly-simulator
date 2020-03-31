@@ -7,14 +7,12 @@ main {
   display: flex;
 }
 
-
 .seven-segment,
 .traffic-lights {
   display: flex;
   width: fit-content;
   margin: auto;
 }
-
 
 input[type="checkbox"] {
   opacity: 0;
@@ -86,7 +84,7 @@ input[type="checkbox"] {
   opacity: 1;
   cursor: pointer;
 }
- 
+
 .seven-segment label.active {
   opacity: 1;
 }
@@ -173,12 +171,13 @@ input[type="checkbox"] {
   border-right: 15px solid transparent;
 }
 
-.seven-segment .display-side{
-
-
+.display-side {
+  margin: 15px;
+  font-size: 22px;
 }
-.seven-segment .display-side input{
-  transform: scale (1.5);
+.display-side input {
+  height: 20px;
+  transform: scale(2);
 }
 
 /* END seven-segments-led */
