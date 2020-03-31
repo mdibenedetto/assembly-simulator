@@ -3,32 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Assembly simlator</title>
     <style>
       ul li {
         margin: 5px;
       }
+      main {
+        display: flex;
+        width: 100%;
+      }
+      iframe {
+        width: 50%;
+        height: 700px;
+      }
     </style>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/common.js"></script>
   </head>
-  <body style="font-size: 25px;">
-    <h1>Traffic lights</h1>
-    <br>
-    <a target="_blank" href="./traffic-lights.html">
-      Traffic lights
-    </a> 
-    <br>
-    <br>
-    <a
-      target="_blank"
-      href="http://www.softwareforeducation.com/sms32v50/sms32v50_manual/120-02tlight.htm"
-    >
-      /sms32v50_manual/120-02tlight.htm
-    </a>
- 
+  <body>
+    <script>
+      loadNavbar();
+    </script>
 
-    <h1>Seven segments led</h1>
-    <a target="_blank" href="./seven-segments-led.html">
-      Seven segments led
-    </a>
+    <main>
+      <iframe src="./traffic-lights.html" onload="onLoad(this)"></iframe>
+      <iframe src="./seven-segments-led.html" onload="onLoad(this)"></iframe>
+    </main>
+    <script>
+      function onLoad(iframe) { 
+
+        iframe.scrollTop = 0;;
+
+        var style = document.createElement("style");
+        style.textContent = `
+        main{
+            transform: scale(0.5); 
+        }
+        nav{
+          display: none
+        }
+        `;
+
+        iframe.contentDocument.head.appendChild(style)
+        iframe.contentDocument.scrollTop = 0;;
+      }
+    </script>
   </body>
 </html>

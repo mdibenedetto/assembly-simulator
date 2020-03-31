@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seven segments led - Number convert</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/common.js"></script>
   </head>
   <body>
+    <script>
+      loadNavbar();
+    </script>
     <main>
       <section>
         <section class="seven-segment">
@@ -43,7 +47,13 @@
         <section class="display-side">
           <label for="leftDisplay">
             Left Display
-            <input type="radio" name="side" id="leftDisplay" value="0" checked />
+            <input
+              type="radio"
+              name="side"
+              id="leftDisplay"
+              value="0"
+              checked
+            />
           </label>
           <label for="rightDisplay">
             Right Display
