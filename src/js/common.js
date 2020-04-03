@@ -1,8 +1,8 @@
 function loadNavbar() {
   const navBar = `  
   <nav>
-    <a href="./">
-    Home
+    <a href="./arithmetic.html">
+      Math basic calculations
     </a>
     |
     <a href="./traffic-lights.html">

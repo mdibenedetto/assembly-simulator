@@ -4,7 +4,8 @@ body {
   flex-flow: column;
   align-items: center;
 }
-
+ 
+  
 nav {
   display: flex;
   width: 100%;
@@ -18,12 +19,12 @@ nav {
 }
 
 nav a {
-  text-decoration: none;  
+  text-decoration: none;
   display: inline-block;
   margin: 5px;
   padding: 5px;
 }
-nav a:hover{
+nav a:hover {
   color: lightslategray;
 }
 
@@ -31,6 +32,7 @@ main {
   display: flex;
 }
 
+.arithmetic,
 .seven-segment,
 .traffic-lights {
   display: flex;
@@ -42,6 +44,17 @@ input[type="checkbox"] {
   opacity: 0;
   display: none;
 }
+
+/* START arithmetic */
+.arithmetic * {
+  font-size: 30px;
+}
+
+.arithmetic{
+  margin: 10px;
+}
+
+/* END arithmetic */
 
 /* START traffic-lights  */
 .traffic-lights label {
@@ -232,6 +245,8 @@ output {
   font-size: 25px;
 }
 
+#assemblyValue1,
+#assemblyValue2,
 #assemblyValue {
   color: red;
 }

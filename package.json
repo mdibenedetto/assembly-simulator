@@ -1,0 +1,21 @@
+{
+  "name": "assembly-simulator",
+  "version": "1.0.0",
+  "description": "you can asses by using this link  [NCI-Assembly-simulator](https://mdibenedetto.github.io/NCI-Assembly-simulator/).",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd ./src/ && lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdibenedetto/NCI-Assembly-simulator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdibenedetto/NCI-Assembly-simulator/issues"
+  },
+  "homepage": "https://github.com/mdibenedetto/NCI-Assembly-simulator#readme"
+}

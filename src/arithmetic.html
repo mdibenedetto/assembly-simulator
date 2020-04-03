@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arithmetic</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/common.js"></script>
+  </head>
+  <body>
+    <script>
+      loadNavbar();
+    </script>
+
+    <a
+      target="_blank"
+      href="https://www.rapidtables.com/convert/number/decimal-to-hex.html"
+    >
+      decimal-to-hex.html
+    </a>
+    <a
+      target="_blank"
+      href="http://www.softwareforeducation.com/sms32v50/sms32v50_manual/100-01first.htm"
+    >
+      100-01first.htm
+    </a>
+    <section id="">
+      <section class="arithmetic">
+        <label>
+          First number
+          <input id="txtFirstNumber" type="number" onchange="setHexNumber()" />
+        </label>
+
+        <select id="ddOperator" name="" onchange="setHexNumber()">
+          <option value="ADD">ADD</option>
+          <option value="SUB">SUB</option>
+          <option value="MUL">MUL</option>
+          <option value="DIV">DIV</option>
+        </select>
+
+        <label>
+          First number
+          <input id="txtSecondNumber" type="number" onchange="setHexNumber()" />
+        </label>
+      </section>
+
+      <section class="output-container">
+        <div class="output-content">
+          <div>
+            <h2>Binary:</h2>
+            <output id="binaryOutput">
+              00000000
+            </output>
+          </div>
+
+          <div>
+            <h2>Hexadecimal:</h2>
+            <output id="hexOutput">
+              x0
+            </output>
+          </div>
+
+          <div>
+            <h2>Decimal:</h2>
+            <output id="decimalOutput">
+              0
+            </output>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="assembly">
+      <pre>
+        ; ===== WORK OUT 2 PLUS 2 ======================================
+          CLO		; Close unwanted windows.
+          MOV AL,<span id="assemblyValue1">0</span>	; Copy a 2 into the AL register.
+          MOV BL,<span id="assemblyValue2">0</span>	; Copy a 2 into the BL register.
+          <span id="assemblyOperator">ADD</span> AL,BL	; Add AL to BL. Answer goes into AL.
+          END		; Program ends
+        ; ===== Program Ends ===========================================
+    </pre>
+    </section>
+    <script>
+      const txtFirstNumber = document.querySelector("#txtFirstNumber");
+      const txtSecondNumber = document.querySelector("#txtSecondNumber");
+      const ddOperator = document.querySelector("#ddOperator");
+
+      const assemblyValue1 = document.querySelector("#assemblyValue1");
+      const assemblyValu2 = document.querySelector("#assemblyValue2");
+      const assemblyOperator = document.querySelector("#assemblyOperator");
+
+      function setHexNumber() {
+        const firstNumber = txtFirstNumber.value || 0;
+        const secondNumber = txtSecondNumber.value || 0; 
+        const operator =  ddOperator.value || "ADD";
+ 
+        firstNumberHex = toHex(firstNumber);
+        secondNumberHex = toHex(secondNumber);
+
+        assemblyValue1.innerHTML = firstNumberHex;
+        assemblyOperator.innerHTML = operator;
+        assemblyValu2.innerHTML = secondNumberHex;
+      }
+
+      function toHex(binaryInputString) {
+        const BASE = 10;
+        const bynaryOutput = parseInt(binaryInputString, BASE);
+        let hexOutput = bynaryOutput.toString(16).toUpperCase();
+        return hexOutput;
+      }
+    </script>
+  </body>
+</html>
