@@ -1,13 +1,14 @@
 # Test demo links:
 
-1. [Arithmetic calculation](https://mdibenedetto.github.io/assembly-simulator/docs/img/arithmetic.html).
+1. [Arithmetic calculation](https://mdibenedetto.github.io/assembly-simulator/src/arithmetic.html).
   
-  ![](/src/assembly-calculator.png)
+  <img src = "/docs/img/assembly-calculator.png" width = "400px" />
  
-2. [Traffic Lights](https://mdibenedetto.github.io/assembly-simulator/docs/img/traffic-lights.html).
+2. [Traffic Lights](https://mdibenedetto.github.io/assembly-simulator/src/traffic-lights.html).
 
- ![](/src/assembly-led-7-segments.png) 
+ <img src = "/docs/img/assembly-led-7-segments.png" width = "400px" />
  
-3. [Seven Segments Led](https://mdibenedetto.github.io/assembly-simulator/docs/img/seven-segments-led.html).
+3. [Seven Segments Led](https://mdibenedetto.github.io/assembly-simulator/src/seven-segments-led.html).
+
+<img src = "/docs/img/assembly-traffic-lights.png" width = "400px" />
  
- ![](/src/assembly-traffic-lights.png)
