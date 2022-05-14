@@ -1,84 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Traffic lights - Number convert</title>
-    <link rel="stylesheet" href="./css/style.css" />
-    <script src="./js/common.js"></script>
-  </head>
-  <body>
-    <script>
-      loadNavbar();
-    </script>
-    <main>
-      <a
-      target="_blank"
-      href="http://www.softwareforeducation.com/sms32v50/sms32v50_manual/120-02tlight.htm"
-    >
-      /sms32v50_manual/120-02tlight.htm
-    </a>
-      <section id="traffic-lights-coverter">
-        <section class="traffic-lights">
-          <section class="left">
-            <label class="red">
-              <input type="checkbox" name="" />
-            </label>
-            <label class="yellow">
-              <input type="checkbox" name="" />
-            </label>
-            <label class="green">
-              <input type="checkbox" name="" />
-            </label>
-            <label class="gray">
-              <input disabled type="checkbox" name="" />
-            </label>
-          </section>
 
-          <section class="right">
-            <label class="red">
-              <input type="checkbox" name="" />
-            </label>
-            <label class="yellow">
-              <input type="checkbox" name="" />
-            </label>
-            <label class="green">
-              <input type="checkbox" name="" />
-            </label>
-            <label class="gray">
-              <input disabled type="checkbox" name="" />
-            </label>
-          </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traffic lights - Number convert</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="./js/common.js"></script>
+</head>
+
+<body>
+  <script>
+    loadNavbar();
+  </script>
+
+  <a target="_blank" href="http://www.softwareforeducation.com/sms32v50/sms32v50_manual/120-02tlight.htm">
+    /sms32v50_manual/120-02tlight.htm
+  </a>
+  <main>
+
+    <section id="traffic-lights-coverter">
+      <section class="traffic-lights">
+        <section class="left">
+          <label class="red">
+            <input type="checkbox" name="" />
+          </label>
+          <label class="yellow">
+            <input type="checkbox" name="" />
+          </label>
+          <label class="green">
+            <input type="checkbox" name="" />
+          </label>
+          <label class="gray">
+            <input disabled type="checkbox" name="" />
+          </label>
         </section>
 
-        <section class="output-container">
-          <div class="output-content">
-            <div>
-              <h2>Binary:</h2>
-              <output id="binaryOutput">
-                00000000
-              </output>
-            </div>
-
-            <div>
-              <h2>Hexadecimal:</h2>
-              <output id="hexOutput">
-                x0
-              </output>
-            </div>
-
-            <div>
-              <h2>Decimal:</h2>
-              <output id="decimalOutput">
-                0
-              </output>
-            </div>
-          </div>
+        <section class="right">
+          <label class="red">
+            <input type="checkbox" name="" />
+          </label>
+          <label class="yellow">
+            <input type="checkbox" name="" />
+          </label>
+          <label class="green">
+            <input type="checkbox" name="" />
+          </label>
+          <label class="gray">
+            <input disabled type="checkbox" name="" />
+          </label>
         </section>
       </section>
 
-      <section id="assembly">
-        <pre>
+      <section class="output-container">
+        <div class="output-content">
+          <div>
+            <h2>Binary:</h2>
+            <output id="binaryOutput">
+              00000000
+            </output>
+          </div>
+
+          <div>
+            <h2>Hexadecimal:</h2>
+            <output id="hexOutput">
+              x0
+            </output>
+          </div>
+
+          <div>
+            <h2>Decimal:</h2>
+            <output id="decimalOutput">
+              0
+            </output>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="assembly">
+      <pre>
             ; ===== CONTROL THE TRAFFIC LIGHTS =============================
             
                 CLO             ; Close unwanted windows.
@@ -94,49 +95,50 @@
                 
             ; ===== Program Ends ========================================== 
             </pre>
-      </section>
-    </main>
+    </section>
+  </main>
 
-    <script>
-      const trafficLights = document.querySelectorAll(
-        ".traffic-lights input:not([disabled])"
-      );
+  <script>
+    const trafficLights = document.querySelectorAll(
+      ".traffic-lights input:not([disabled])"
+    );
 
-      trafficLights.forEach(tl =>
-        tl.addEventListener("click", toggle, { capture: true })
-      );
+    trafficLights.forEach(tl =>
+      tl.addEventListener("click", toggle, { capture: true })
+    );
 
-      const binaryOutputElement = document.querySelector("#binaryOutput");
-      const hexOutputElement = document.querySelector("#hexOutput");
-      const decimalOutputElement = document.querySelector("#decimalOutput");
+    const binaryOutputElement = document.querySelector("#binaryOutput");
+    const hexOutputElement = document.querySelector("#hexOutput");
+    const decimalOutputElement = document.querySelector("#decimalOutput");
 
-      const assemblyValue = document.querySelector("#assemblyValue");
+    const assemblyValue = document.querySelector("#assemblyValue");
 
-      function toggle() {
-        event.target.parentNode.classList.toggle("active");
+    function toggle() {
+      event.target.parentNode.classList.toggle("active");
 
-        let binaryInputString = "";
-        trafficLights.forEach(tl => {
-          if (tl.parentNode.classList.contains("active")) {
-            binaryInputString += "1";
-          } else {
-            binaryInputString += "0";
-          }
-        });
-        //add the unused lights
-        binaryInputString += "00";
+      let binaryInputString = "";
+      trafficLights.forEach(tl => {
+        if (tl.parentNode.classList.contains("active")) {
+          binaryInputString += "1";
+        } else {
+          binaryInputString += "0";
+        }
+      });
+      //add the unused lights
+      binaryInputString += "00";
 
-        var bynaryOutput = parseInt(binaryInputString, 2);
-        // new BigNumber(binaryInputString, 2);
-        let hexOutput = bynaryOutput.toString(16).toUpperCase();
+      var bynaryOutput = parseInt(binaryInputString, 2);
+      // new BigNumber(binaryInputString, 2);
+      let hexOutput = bynaryOutput.toString(16).toUpperCase();
 
-        binaryOutputElement.innerHTML = binaryInputString;
-        decimalOutputElement.innerHTML = bynaryOutput;
-        hexOutputElement.innerHTML = hexOutput;
+      binaryOutputElement.innerHTML = binaryInputString;
+      decimalOutputElement.innerHTML = bynaryOutput;
+      hexOutputElement.innerHTML = hexOutput;
 
-        // set assembly value to switch on the chosen lights
-        assemblyValue.innerHTML = hexOutput;
-      }
-    </script>
-  </body>
+      // set assembly value to switch on the chosen lights
+      assemblyValue.innerHTML = hexOutput;
+    }
+  </script>
+</body>
+
 </html>
